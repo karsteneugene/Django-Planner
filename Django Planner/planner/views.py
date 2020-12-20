@@ -1,30 +1,30 @@
 from django.shortcuts import render
 
 
-to_do_list = [
+assignments = [
     {
-        'day': '25 December',
-        'to_do_1': 'Grab breakfast',
-        'to_do_2': 'Meet up friends',
-        'to_do_3': 'Work out',
-        'notes': 'Remember, you are on a diet!'
+        'title': 'Python Programming Exercise 12',
+        'date_assigned': '1 December',
+        'date_due': '8 December',
+        'course': 'Program Design Methods',
+        'description': '<Objective for this task>'
     },
     {
-        'day': '26 December',
-        'to_do_1': 'Grab breakfast',
-        'to_do_2': 'Complete project',
-        'to_do_3': 'Walk dog',
-        'notes': 'Better finish project early!'
+        'title': 'Regular Expressions',
+        'date_assigned': '5 December',
+        'date_due': '12 December',
+        'course': 'Discrete Structures',
+        'description': '<Objective for this task>'
     }
 ]
 
 
-def home(request):
+def dashboard(request):
     context = {
-        'to_dos': to_do_list
+        'assignments': assignments
     }
-    return render(request, 'planner/home.html', context)
+    return render(request, 'planner/dashboard.html', context)
 
 
-def calendar(request):
-    return render(request, 'planner/calendar.html', {'title': 'Calendar'})
+def notes(request):
+    return render(request, 'planner/notes.html', {'title': 'Notes'})

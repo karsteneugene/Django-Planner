@@ -1,0 +1,11 @@
+{% extends "planner/base.html" %}
+{% block content %}
+{% for assignment in assignments %}
+<h1>{{ assignment.title }}</h1>
+<h3>{{ assignment.course }}</h3>
+<p>Date assigned: {{ assignment.date_assigned }}</p>
+<p>Date due: {{ assignment.date_due }}</p>
+<p>{{ assignment.description }}</p>
+<div class="line"></div>
+{% endfor %}
+{% endblock content %}
