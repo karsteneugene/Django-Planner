@@ -40,26 +40,24 @@
 
             <ul class="list-unstyled components">
                 <p>Semester 1</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">Dashboard</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Assignments</a>
-                        </li>
-                        <li>
-                            <a href="#">Projects</a>
-                        </li>
-                        <li>
-                            <a href="#">Exams</a>
-                        </li>
-                        <li>
-                            <a href="#">Courses</a>
-                        </li>
-                    </ul>
+                <li>
+                    <a href="{% url 'planner-dashboard' %}">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#">Notes</a>
+                    <a href="#">Assignments</a>
+                </li>
+                <li>
+                    <a href="#">Projects</a>
+                </li>
+                <li>
+                    <a href="#">Exams</a>
+                </li>
+                <li>
+                    <a href="#">Courses</a>
+                </li>
+                </li>
+                <li>
+                    <a href="{% url 'planner-notes' %}">Notes</a>
                 </li>
                 <li>
                     <a href="#" class="next-sem">Next Semester</a>
@@ -95,7 +93,7 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav mx-auto">
-                            <h2>APP TITLE</h2>
+                            <a href="{% url 'planner-dashboard' %}" style="font-size: 2.0em;">APP TITLE</a>
                         </ul>
                     </div>
                 </div>

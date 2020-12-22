@@ -17,6 +17,14 @@ p {
     color: #999;
 }
 
+p.cards {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: rgb(0, 162, 255);
+}
+
 a, a:hover, a:focus {
     color: inherit;
     text-decoration: none;
@@ -98,23 +106,6 @@ a.next-sem{
 #sidebar ul li a:hover {
     color: #0084c2;
     background: rgb(250, 250, 250);
-}
-
-#sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fafafa;
-    background: #0075ac;
-}
-
-a[data-toggle="collapse"] {
-    position: relative;
-}
-
-.dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
 }
 
 ul ul a {
