@@ -30,50 +30,6 @@
 
 <body>
     <div class="wrapper">
-        <!-- Sidebar Holder -->
-        <nav id="sidebar">
-            <a href="#">
-                <div class="sidebar-header">
-                    <h3>Profile</h3>
-                </div>
-            </a>
-
-            <ul class="list-unstyled components">
-                <p>Semester 1</p>
-                <li>
-                    <a href="{% url 'planner-dashboard' %}">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Assignments</a>
-                </li>
-                <li>
-                    <a href="#">Projects</a>
-                </li>
-                <li>
-                    <a href="#">Exams</a>
-                </li>
-                <li>
-                    <a href="#">Courses</a>
-                </li>
-                </li>
-                <li>
-                    <a href="{% url 'planner-notes' %}">Notes</a>
-                </li>
-                <li>
-                    <a href="#" class="next-sem">Next Semester</a>
-                </li>
-            </ul>
-
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Ask for help</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Logout</a>
-                </li>
-            </ul>
-        </nav>
-
         <!-- Page Content Holder -->
         <div id="content">
 
@@ -98,6 +54,13 @@
                     </div>
                 </div>
             </nav>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
             {% block content %}{% endblock %}
         </div>
     </div>
