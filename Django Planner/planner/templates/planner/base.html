@@ -34,7 +34,8 @@
         <nav id="sidebar">
             <a href="{% url 'profile' %}">
                 <div class="sidebar-header">
-                    <h5>{{ user.username }}</h5>
+                    <h6><img class="rounded-circle" style="height: 40px; width: 40px; margin-right: 16px;"
+                            src="{{ user.profile.image.url }}">{{ user.username }}</h6>
                 </div>
             </a>
 
@@ -91,6 +92,13 @@
                     </div>
                 </div>
             </nav>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
             {% block content %}{% endblock %}
         </div>
     </div>
