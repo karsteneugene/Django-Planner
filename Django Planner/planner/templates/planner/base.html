@@ -32,14 +32,13 @@
     <div class="wrapper">
         <!-- Sidebar Holder -->
         <nav id="sidebar">
-            <a href="#">
+            <a href="{% url 'profile' %}">
                 <div class="sidebar-header">
-                    <h3>Profile</h3>
+                    <h5>{{ user.username }}</h5>
                 </div>
             </a>
 
             <ul class="list-unstyled components">
-                <p>Semester 1</p>
                 <li>
                     <a href="{% url 'planner-dashboard' %}">Dashboard</a>
                 </li>
@@ -59,17 +58,11 @@
                 <li>
                     <a href="{% url 'planner-notes' %}">Notes</a>
                 </li>
-                <li>
-                    <a href="#" class="next-sem">Next Semester</a>
-                </li>
             </ul>
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Ask for help</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Logout</a>
+                    <a href="{% url 'logout' %}" class="article">Logout</a>
                 </li>
             </ul>
         </nav>

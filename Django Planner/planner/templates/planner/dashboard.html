@@ -7,8 +7,8 @@
             <p></p>
             {% for task in tasks %}
             {% if task.type == "Assignment" %}
-            <p class="cards"><a href="#" class="card-link">{{ task.title }}</a> -> Due: {{ task.date_due|date:"d M" }}
-            </p>
+            <p class="cards"><a href="#" class="card-link">{{ task.title }}</a> <small class="ml-5"
+                    style="color: black">{{task.date_due|date:"d M" }}</small></p>
             {% endif %}
             {% endfor %}
         </div>
@@ -19,8 +19,8 @@
             <p></p>
             {% for task in tasks %}
             {% if task.type == "Project" %}
-            <p class="cards"><a href="#" class="card-link">{{ task.title }}</a> -> Due: {{ task.date_due|date:"d M" }}
-            </p>
+            <p class="cards"><a href="#" class="card-link">{{ task.title }}</a><small class="ml-5"
+                    style="color: black">{{task.date_due|date:"d M" }}</small></p>
             {% endif %}
             {% endfor %}
         </div>
