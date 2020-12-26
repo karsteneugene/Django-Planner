@@ -1,0 +1,16 @@
+{% extends "planner/base.html" %}
+{% block content %}
+<div class="content-section card shadow-sm p-3 mb-5 bg-white rounded mx-auto" style="width: 80%;">
+    <h2>{{ object.title }}</h2><small>{{ object.course }}</small>
+    <hr>
+    <h5>{{ object.type }}</h5>
+    <p class="mt-2">Date assigned: {{ object.date_assigned|date:"d M Y" }}</p>
+    <p>Date due: {{ object.date_due|date:"d M Y" }}</p>
+    <hr>
+    <h5>Description:</h5>
+    <p>{{ object.description }}</p>
+    <hr>
+    <a class="btn btn-secondary" href="{% url 'task-update' object.id %}">Update</a>
+    <a class="btn btn-danger mt-2" href="{% url 'task-delete' object.id %}">Delete</a>
+</div>
+{% endblock content %}

@@ -3,35 +3,45 @@
 <div class="card-deck">
     <div class="card shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-body">
-            <h5 class="card-title">Assignments</h5>
+            <h5 class="card-title">Assignments<a style="color: rgb(33, 201, 0); font-size: 15px; margin-left: 100px;"
+                    href="{% url 'task-create' %}">+ Add</a></h5>
+
             <p></p>
             {% for task in tasks %}
             {% if task.type == "Assignment" %}
-            <p class="cards"><a href="#" class="card-link">{{ task.title }}</a> <small class="ml-5"
-                    style="color: black">{{task.date_due|date:"d M" }}</small></p>
+            {% if task.user == user %}
+            <p class="cards"><a href="{% url 'task-detail' task.id %}" class="card-link">{{ task.title }}</a> <small
+                    class="ml-5" style="color: black">{{task.date_due|date:"d M" }}</small></p>
+            {% endif %}
             {% endif %}
             {% endfor %}
         </div>
     </div>
     <div class="card shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-body">
-            <h5 class="card-title">Projects</h5>
+            <h5 class="card-title">Projects<a style="color: rgb(33, 201, 0); font-size: 15px; margin-left: 100px;"
+                    href="{% url 'task-create' %}">+ Add</a></h5>
             <p></p>
             {% for task in tasks %}
             {% if task.type == "Project" %}
-            <p class="cards"><a href="#" class="card-link">{{ task.title }}</a><small class="ml-5"
-                    style="color: black">{{task.date_due|date:"d M" }}</small></p>
+            {% if task.user == user %}
+            <p class="cards"><a href="{% url 'task-detail' task.id %}" class="card-link">{{ task.title }}</a><small
+                    class="ml-5" style="color: black">{{task.date_due|date:"d M" }}</small></p>
+            {% endif %}
             {% endif %}
             {% endfor %}
         </div>
     </div>
     <div class="card shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-body">
-            <h5 class="card-title">Exams</h5>
+            <h5 class="card-title">Exams<a style="color: rgb(33, 201, 0); font-size: 15px; margin-left: 100px;"
+                    href="#">+ Add</a></h5>
             <p></p>
             {% for task in tasks %}
             {% if task.type == "Exam" %}
+            {% if task.user == user %}
             <p class="cards"><a href="#" class="card-link">{{ task.title }}</a></p>
+            {% endif %}
             {% endif %}
             {% endfor %}
         </div>
