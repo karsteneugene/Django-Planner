@@ -1,0 +1,12 @@
+{% extends "planner/base.html" %}
+{% block content %}
+<a class="btn btn-outline-success" href="{% url 'course-add' %}">+ Add</a>
+{% for course in courses %}
+{% if course.user == user %}
+<div class="content-section card shadow-sm p-3 mb-3 bg-white rounded mx-auto" style="width: 80%;">
+    <h5><a href="{% url 'course-detail' course.id %}" style="color: rgb(0, 176, 230);">{{ course.course_name }}</a><a
+            class="btn btn-outline-danger float-right" href="{% url 'course-delete' course.id %}">Delete</a></h5>
+</div>
+{% endif %}
+{% endfor %}
+{% endblock content %}

@@ -10,7 +10,7 @@
     <h5>Description:</h5>
     <p>{{ object.description }}</p>
     <hr>
-    <a class="btn btn-secondary" href="{% url 'task-update' object.id %}">Update</a>
+    <a class="btn btn-primary" href="{% url 'task-update' object.id %}">Update</a>
     <a class="btn btn-danger mt-2" href="{% url 'task-delete' object.id %}">Delete</a>
 </div>
 {% endblock content %}

@@ -1,10 +1,17 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Task
+from .models import Task, Course
 
 
 class DateInput(forms.DateInput):
     input_type = 'date'
+
+
+class CourseForm(ModelForm):
+
+    class Meta:
+        model = Course
+        fields = ['course_name']
 
 
 class TaskForm(ModelForm):

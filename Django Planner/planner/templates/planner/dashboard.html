@@ -3,15 +3,18 @@
 <div class="card-deck">
     <div class="card shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-body">
-            <h5 class="card-title">Assignments<a style="color: rgb(33, 201, 0); font-size: 15px; margin-left: 100px;"
-                    href="{% url 'task-create' %}">+ Add</a></h5>
-
+            <h4 class="card-title mb-4">Assignments<a class="btn btn-outline-success btn-sm ml-5"
+                    href="{% url 'task-create' %}">+
+                    Add</a></h4>
+            <hr>
             <p></p>
             {% for task in tasks %}
             {% if task.type == "Assignment" %}
             {% if task.user == user %}
-            <p class="cards"><a href="{% url 'task-detail' task.id %}" class="card-link">{{ task.title }}</a> <small
-                    class="ml-5" style="color: black">{{task.date_due|date:"d M" }}</small></p>
+            <p class="cards"><a href="{% url 'task-detail' task.id %}" class="card-link" style="font-size: 15px;">
+                    {{ task.title }}</a> <small class="ml-2" style="color: black">(Due:
+                    {{task.date_due|date:"d M"}})</small>
+            </p>
             {% endif %}
             {% endif %}
             {% endfor %}
@@ -19,44 +22,21 @@
     </div>
     <div class="card shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-body">
-            <h5 class="card-title">Projects<a style="color: rgb(33, 201, 0); font-size: 15px; margin-left: 100px;"
-                    href="{% url 'task-create' %}">+ Add</a></h5>
+            <h4 class="card-title mb-4">Projects<a class="btn btn-outline-success btn-sm ml-5"
+                    href="{% url 'task-create' %}">+ Add</a></h4>
+            <hr>
             <p></p>
             {% for task in tasks %}
             {% if task.type == "Project" %}
             {% if task.user == user %}
-            <p class="cards"><a href="{% url 'task-detail' task.id %}" class="card-link">{{ task.title }}</a><small
-                    class="ml-5" style="color: black">{{task.date_due|date:"d M" }}</small></p>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-        </div>
-    </div>
-    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
-        <div class="card-body">
-            <h5 class="card-title">Exams<a style="color: rgb(33, 201, 0); font-size: 15px; margin-left: 100px;"
-                    href="#">+ Add</a></h5>
-            <p></p>
-            {% for task in tasks %}
-            {% if task.type == "Exam" %}
-            {% if task.user == user %}
-            <p class="cards"><a href="#" class="card-link">{{ task.title }}</a></p>
+            <p class="cards"><a href="{% url 'task-detail' task.id %}" class="card-link" style="font-size: 15px;">
+                    {{ task.title }}</a> <small class="ml-2" style="color: black">(Due:
+                    {{task.date_due|date:"d M"}})</small>
+            </p>
             {% endif %}
             {% endif %}
             {% endfor %}
         </div>
     </div>
 </div>
-
-<div style="padding-top: 1.1em">
-    <div class="card shadow-sm p-3 mb-5 bg-white rounded" style="width: 100%;">
-        <div class="card-body">
-            <h5 class="card-title">Courses</h5>
-            <p></p>
-            <p class="cards"><a href="#" class="card-link">List of all course</a></p>
-        </div>
-    </div>
-</div>
-
-
 {% endblock content %}

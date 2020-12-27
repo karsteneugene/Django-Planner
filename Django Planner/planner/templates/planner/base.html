@@ -35,8 +35,9 @@
         <nav id="sidebar">
             <a href="{% url 'profile' %}">
                 <div class="sidebar-header">
-                    <h6><img class="rounded-circle" style="height: 40px; width: 40px; margin-right: 16px;"
-                            src="{{ user.profile.image.url }}">{{ user.username }}</h6>
+                    <img class="rounded-circle" style="height: 40px; width: 40px; margin-right: 16px;"
+                        src="{{ user.profile.image.url }}">
+                    {{ user.username }}
                 </div>
             </a>
 
@@ -45,16 +46,13 @@
                     <a href="{% url 'planner-dashboard' %}">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#">Assignments</a>
+                    <a href="{% url 'planner-assignments' %}">Assignments</a>
                 </li>
                 <li>
-                    <a href="#">Projects</a>
+                    <a href="{% url 'planner-projects' %}">Projects</a>
                 </li>
                 <li>
-                    <a href="#">Exams</a>
-                </li>
-                <li>
-                    <a href="#">Courses</a>
+                    <a href="{% url 'planner-courses' %}">Courses</a>
                 </li>
                 </li>
                 <li>
