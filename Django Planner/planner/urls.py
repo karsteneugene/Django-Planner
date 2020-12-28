@@ -12,7 +12,6 @@ from .views import (
     CourseCreateView,
     CourseDeleteView
 )
-from . import views
 
 
 urlpatterns = [

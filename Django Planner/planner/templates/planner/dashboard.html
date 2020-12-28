@@ -11,9 +11,10 @@
             {% for task in tasks %}
             {% if task.type == "Assignment" %}
             {% if task.user == user %}
-            <p class="cards"><a href="{% url 'task-detail' task.id %}" class="card-link" style="font-size: 15px;">
-                    {{ task.title }}</a> <small class="ml-2" style="color: black">(Due:
-                    {{task.date_due|date:"d M"}})</small>
+            <p class="cards">
+                <a href="{% url 'task-detail' task.id %}" class="card-link" style="font-size: 15px;">
+                    {{ task.title }}</a>
+                <small class="ml-2" style="color: black">(Due: {{task.date_due|date:"d M"}})</small>
             </p>
             {% endif %}
             {% endif %}
@@ -22,16 +23,18 @@
     </div>
     <div class="card shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-body">
-            <h4 class="card-title mb-4">Projects<a class="btn btn-outline-success btn-sm ml-5"
-                    href="{% url 'task-create' %}">+ Add</a></h4>
+            <h4 class="card-title mb-4">Projects
+                <a class="btn btn-outline-success btn-sm ml-5" href="{% url 'task-create' %}">+ Add</a>
+            </h4>
             <hr>
             <p></p>
             {% for task in tasks %}
             {% if task.type == "Project" %}
             {% if task.user == user %}
-            <p class="cards"><a href="{% url 'task-detail' task.id %}" class="card-link" style="font-size: 15px;">
-                    {{ task.title }}</a> <small class="ml-2" style="color: black">(Due:
-                    {{task.date_due|date:"d M"}})</small>
+            <p class="cards">
+                <a href="{% url 'task-detail' task.id %}" class="card-link" style="font-size: 15px;">
+                    {{ task.title }}</a>
+                <small class="ml-2" style="color: black">(Due: {{task.date_due|date:"d M"}})</small>
             </p>
             {% endif %}
             {% endif %}

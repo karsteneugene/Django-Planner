@@ -1,0 +1,23 @@
+{% extends "planner/base.html" %}
+{% block content %}
+<a class="btn btn-outline-success btn-lg btn-block mx-auto mb-3" style="width: 80%;" href="{% url 'notes-create' %}">+
+    Add Note</a>
+<div class="card-columns">
+    {% for note in notes %}
+    {% if note.user == user %}
+    <div class="card shadow-sm p-3 mb-5 bg-white rounded">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="{% url 'notes-detail' note.id%}" style="color: rgb(0, 176, 230);">{{ note.title }}</a>
+                <a class="btn btn-outline-danger btn-sm float-right" href="{% url 'notes-delete' note.id %}">Delete</a>
+                <a class="btn btn-outline-primary btn-sm float-right mr-2"
+                    href="{% url 'notes-update' note.id %}">Update</a>
+            </h5>
+            <p class="card-text">{{ note.notes|truncatechars:50 }}</p>
+            <p class="card-text"><small class="text-muted">Last Updated: {{ note.date_updated }}</small></p>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock content %}

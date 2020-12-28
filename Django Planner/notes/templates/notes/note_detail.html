@@ -1,0 +1,14 @@
+{% extends "planner/base.html" %}
+{% block content %}
+<div class="content-section card shadow-sm p-3 mb-5 bg-white rounded mx-auto" style="width: 100%;">
+    <h2>
+        {{ object.title }}
+        <a class="btn btn-danger float-right ml-2" href="{% url 'notes-delete' object.id %}">Delete</a>
+        <a class="btn btn-primary float-right" href="{% url 'notes-update' object.id %}">Update</a>
+    </h2>
+    <hr>
+    <p>{{ object.notes }}</p>
+    <hr>
+    <small>Last Updated: {{ object.date_updated }}</small>
+</div>
+{% endblock content %}

@@ -4,13 +4,13 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4" style="text-align: center;">Delete Course</legend>
-            <h2 style="text-align: center;">Are you sure you want to delete "{{ object.course_name }}"?</h2>
+            <legend class="border-bottom mb-4" style="text-align: center;">Delete Note</legend>
+            <h2 style="text-align: center;">Are you sure you want to delete "{{ object.title }}"?</h2>
         </fieldset>
         <div class="form-group">
             <p style="text-align: center;">
                 <button class="btn btn-outline-danger mr-2" type="submit">Delete</button>
-                <a class="btn btn-outline-secondary ml-2" href="{% url 'planner-courses' %}">Cancel</a>
+                <a class="btn btn-outline-secondary ml-2" href="{% url 'notes' %}">Cancel</a>
             </p>
         </div>
     </form>

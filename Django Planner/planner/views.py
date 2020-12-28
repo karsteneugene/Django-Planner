@@ -8,7 +8,6 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from django.contrib.auth.decorators import login_required
 from .forms import TaskForm, CourseForm
 from .models import Task, Course
 
@@ -70,6 +69,11 @@ class TaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def test_func(self):
         task = self.get_object()
