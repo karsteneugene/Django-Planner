@@ -117,11 +117,6 @@ class CourseCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['user'] = self.request.user
-        return kwargs
-
 
 class CourseDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Course
