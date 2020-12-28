@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
@@ -44,10 +45,11 @@ class TaskDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
         return False
 
 
-class TaskCreateView(LoginRequiredMixin, CreateView):
+class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Task
     form_class = TaskForm
     success_url = '/'
+    success_message = 'Successfully added a task!'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -59,10 +61,11 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         return kwargs
 
 
-class TaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class TaskUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     model = Task
     form_class = TaskForm
     success_url = '/'
+    success_message = 'Successfully made changes to a task!'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -108,10 +111,11 @@ class CourseDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
         return False
 
 
-class CourseCreateView(LoginRequiredMixin, CreateView):
+class CourseCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Course
     form_class = CourseForm
     success_url = '/courses/'
+    success_message = 'Successfully added a course!'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -127,8 +131,3 @@ class CourseDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == course.user:
             return True
         return False
-
-
-@login_required
-def notes(request):
-    return render(request, 'planner/notes.html', {'title': 'Notes'})

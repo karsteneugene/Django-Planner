@@ -29,5 +29,4 @@ urlpatterns = [
     path('courses/new/', CourseCreateView.as_view(), name='course-add'),
     path('courses/<int:pk>/delete/',
          CourseDeleteView.as_view(), name='course-delete'),
-    path('notes/', views.notes, name='planner-notes'),
 ]
