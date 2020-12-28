@@ -22,8 +22,7 @@ class Task(models.Model):
         max_length=10, choices=TYPE_CHOICES, default='assignment')
     date_assigned = models.DateField()
     date_due = models.DateField()
-    course = models.ForeignKey(
-        Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     description = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 

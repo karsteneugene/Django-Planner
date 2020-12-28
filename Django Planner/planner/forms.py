@@ -16,6 +16,10 @@ class CourseForm(ModelForm):
 
 class TaskForm(ModelForm):
 
+    def __init__(self, user, *args, **kwargs):
+        super(TaskForm, self).__init__(*args, **kwargs)
+        self.fields['course'].queryset = Course.objects.filter(user=user)
+
     class Meta:
         model = Task
         fields = ['title', 'type', 'date_assigned',
