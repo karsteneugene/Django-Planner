@@ -12,9 +12,17 @@
             {% if task.type == "Assignment" %}
             {% if task.user == user %}
             <p class="cards">
-                <a href="{% url 'task-detail' task.id %}" class="card-link" style="font-size: 15px;">
-                    {{ task.title }}</a>
+            <form method="POST" action="{% url 'task-delete' task.id %}">
+                {% csrf_token %}
+                <button class="btn btn-outline-success btn-sm mr-2" style="color: rgb(0, 180, 0);" type="submit">
+                    <i class="fas fa-check"></i>
+                </button>
+                <a href="{% url 'task-detail' task.id %}" class="card-link"
+                    style="font-size: 15px; color: rgb(0, 195, 255);">
+                    {{ task.title }}
+                </a>
                 <small class="ml-2" style="color: black">(Due: {{task.date_due|date:"d M"}})</small>
+            </form>
             </p>
             {% endif %}
             {% endif %}
@@ -32,9 +40,17 @@
             {% if task.type == "Project" %}
             {% if task.user == user %}
             <p class="cards">
-                <a href="{% url 'task-detail' task.id %}" class="card-link" style="font-size: 15px;">
-                    {{ task.title }}</a>
+            <form method="POST" action="{% url 'task-delete' task.id %}">
+                {% csrf_token %}
+                <button class="btn btn-outline-success btn-sm mr-2" style="color: rgb(0, 180, 0);" type="submit">
+                    <i class="fas fa-check"></i>
+                </button>
+                <a href="{% url 'task-detail' task.id %}" class="card-link"
+                    style="font-size: 15px; color: rgb(0, 195, 255);">
+                    {{ task.title }}
+                </a>
                 <small class="ml-2" style="color: black">(Due: {{task.date_due|date:"d M"}})</small>
+            </form>
             </p>
             {% endif %}
             {% endif %}

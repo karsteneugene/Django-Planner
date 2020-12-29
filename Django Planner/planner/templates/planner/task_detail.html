@@ -1,7 +1,8 @@
 {% extends "planner/base.html" %}
 {% block content %}
 <div class="content-section card shadow-sm p-3 mb-5 bg-white rounded mx-auto" style="width: 80%;">
-    <h2>{{ object.title }}</h2><small>{{ object.course }}</small>
+    <h2>{{ object.title }}</h2>
+    <small>{{ object.course }}</small>
     <hr>
     <h5>{{ object.type }}</h5>
     <p class="mt-2">Date assigned: {{ object.date_assigned|date:"d M Y" }}</p>
@@ -10,7 +11,10 @@
     <h5>Description:</h5>
     <p>{{ object.description }}</p>
     <hr>
-    <a class="btn btn-primary" href="{% url 'task-update' object.id %}">Update</a>
-    <a class="btn btn-danger mt-2" href="{% url 'task-delete' object.id %}">Delete</a>
+    <form method="POST" action="{% url 'task-delete' task.id %}">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
+    <a class="btn btn-primary mt-2" style="width: 10%;" href="{% url 'task-update' object.id %}">Update</a>
 </div>
 {% endblock content %}
