@@ -8,6 +8,7 @@ from .views import (
 )
 
 
+# Creates routes for each functionality
 urlpatterns = [
     path('', NotesListView.as_view(), name='notes'),
     path('<int:pk>/', NotesDetailView.as_view(), name='notes-detail'),

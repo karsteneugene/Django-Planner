@@ -1,9 +1,12 @@
+<!-- Main page displaying all notes -->
 {% extends "planner/base.html" %}
 {% block content %}
 <a class="btn btn-outline-success btn-lg btn-block mx-auto mb-3" style="width: 80%;" href="{% url 'notes-create' %}">+
     Add Note</a>
 <div class="card-columns">
+    <!-- For loop to display each note fetched from the Note table in the database -->
     {% for note in notes %}
+    <!-- If statement to prevent logged in user to see other users' notes -->
     {% if note.user == user %}
     <div class="card shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-body">
@@ -13,6 +16,7 @@
                 <a class="btn btn-outline-primary btn-sm float-right mr-2"
                     href="{% url 'notes-update' note.id %}">Update</a>
             </h5>
+            <!-- Main Notes page does not display full notes, but instead only 50 characters -->
             <p class="card-text">{{ note.notes|truncatechars:50 }}</p>
             <p class="card-text"><small class="text-muted">Last Updated: {{ note.date_updated }}</small></p>
         </div>

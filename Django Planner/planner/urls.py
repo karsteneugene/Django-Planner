@@ -14,6 +14,7 @@ from .views import (
 )
 
 
+# Creates routes for each functionality
 urlpatterns = [
     path('', TaskListView.as_view(), name='planner-dashboard'),
     path('assignments/', AssignmentListView.as_view(), name='planner-assignments'),
