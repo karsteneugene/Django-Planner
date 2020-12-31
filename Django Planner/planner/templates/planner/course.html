@@ -1,12 +1,17 @@
+<!-- Main courses page displaying all courses -->
+
 {% extends "planner/base.html" %}
 {% block content %}
 <a class="btn btn-outline-success btn-lg btn-block mx-auto mb-3" style="width: 80%;" href="{% url 'course-add' %}">+ Add
     Course</a>
+<!-- For loop to display each course fetched from the Course table in the database -->
 {% for course in courses %}
+<!-- If statement to prevent logged in user to see other users' courses -->
 {% if course.user == user %}
 <div class="content-section card shadow-sm p-3 mb-3 bg-white rounded mx-auto" style="width: 80%;">
     <h5>
         <a href="{% url 'course-detail' course.id %}" style="color: rgb(0, 176, 230);">{{ course.course_name }}</a>
+        <!-- Uses the form tag with method 'POST' so that no confirmation page is needed -->
         <form method="POST" action="{% url 'course-delete' course.id %}">
             {% csrf_token %}
             <button class="btn btn-outline-danger float-right" type="submit">Delete</button>

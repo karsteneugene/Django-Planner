@@ -4,7 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 
 
+# Uses the User model so the new user will be added to the table
 class UserRegisterForm(UserCreationForm):
+    # Added an email field for registration
     email = forms.EmailField()
 
     class Meta:
@@ -12,6 +14,7 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 
+# Uses the User model so the logged in users will be able to update their information
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
 
@@ -20,6 +23,7 @@ class UserUpdateForm(forms.ModelForm):
         fields = ['username', 'email']
 
 
+# Uses the Profile model so the logged in users will be able to edit their profile picture
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile

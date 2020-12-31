@@ -1,3 +1,6 @@
+<!-- Base template for login, register, and logout templates -->
+
+<!-- Loads all the static files -->
 {% load static %}
 <!DOCTYPE html>
 
@@ -42,6 +45,8 @@
                     </div>
                 </div>
             </nav>
+
+            <!-- Success messages -->
             {% if messages %}
             {% for message in messages %}
             <div class="alert alert-{{ message.tags }}">

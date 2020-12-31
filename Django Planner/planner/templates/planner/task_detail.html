@@ -1,3 +1,5 @@
+<!-- Page of each task with details of the task -->
+
 {% extends "planner/base.html" %}
 {% block content %}
 <div class="content-section card shadow-sm p-3 mb-5 bg-white rounded mx-auto" style="width: 80%;">
@@ -5,12 +7,15 @@
     <small>{{ object.course }}</small>
     <hr>
     <h5>{{ object.type }}</h5>
+    <!-- Displays the assigned date with format of "DD MMM YYYY" -->
     <p class="mt-2">Date assigned: {{ object.date_assigned|date:"d M Y" }}</p>
+    <!-- Displays the due date with format of "DD MMM YYYY" -->
     <p>Date due: {{ object.date_due|date:"d M Y" }}</p>
     <hr>
     <h5>Description:</h5>
     <p>{{ object.description }}</p>
     <hr>
+    <!-- Uses the form tag with method 'POST' so that no confirmation page is needed -->
     <form method="POST" action="{% url 'task-delete' task.id %}">
         {% csrf_token %}
         <button class="btn btn-danger" type="submit">Delete</button>

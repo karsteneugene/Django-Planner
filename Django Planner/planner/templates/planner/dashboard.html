@@ -1,3 +1,5 @@
+<!-- Main page -->
+
 {% extends "planner/base.html" %}
 {% block content %}
 <div class="card-deck">
@@ -8,12 +10,17 @@
                     Add</a></h4>
             <hr>
             <p></p>
+            <!-- For loop to display each task fetched from the Task table in the database -->
             {% for task in tasks %}
+            <!-- Filters the tasks to display only 'Assignment' type -->
             {% if task.type == "Assignment" %}
+            <!-- If statement to prevent logged in user to see other users' assignments -->
             {% if task.user == user %}
             <p class="cards">
+                <!-- Uses the form tag with method 'POST' so that no confirmation page is needed -->
             <form method="POST" action="{% url 'task-delete' task.id %}">
                 {% csrf_token %}
+                <!-- Green checkmark button to clear tasks that are done -->
                 <button class="btn btn-outline-success btn-sm mr-2" style="color: rgb(0, 180, 0);" type="submit">
                     <i class="fas fa-check"></i>
                 </button>
@@ -21,6 +28,7 @@
                     style="font-size: 15px; color: rgb(0, 195, 255);">
                     {{ task.title }}
                 </a>
+                <!-- Displays the due date with format of "DD MMM" -->
                 <small class="ml-2" style="color: black">(Due: {{task.date_due|date:"d M"}})</small>
             </form>
             </p>
@@ -36,12 +44,17 @@
             </h4>
             <hr>
             <p></p>
+            <!-- For loop to display each task fetched from the Task table in the database -->
             {% for task in tasks %}
+            <!-- Filters the tasks to display only 'Project' type -->
             {% if task.type == "Project" %}
+            <!-- If statement to prevent logged in user to see other users' projects -->
             {% if task.user == user %}
             <p class="cards">
+                <!-- Uses the form tag with method 'POST' so that no confirmation page is needed -->
             <form method="POST" action="{% url 'task-delete' task.id %}">
                 {% csrf_token %}
+                <!-- Green checkmark button to clear tasks that are done -->
                 <button class="btn btn-outline-success btn-sm mr-2" style="color: rgb(0, 180, 0);" type="submit">
                     <i class="fas fa-check"></i>
                 </button>
@@ -49,6 +62,7 @@
                     style="font-size: 15px; color: rgb(0, 195, 255);">
                     {{ task.title }}
                 </a>
+                <!-- Displays the due date with format of "DD MMM" -->
                 <small class="ml-2" style="color: black">(Due: {{task.date_due|date:"d M"}})</small>
             </form>
             </p>
